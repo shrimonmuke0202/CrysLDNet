@@ -27,8 +27,12 @@ conda create -n crysldnet python=3.11.13
 
 pip install torch==2.1.0 --index-url https://download.pytorch.org/whl/cu121
 
+pip install pyg_lib torch_scatter torch_sparse -f https://data.pyg.org/whl/torch-2.1.0+cu121.html
+
 # Then install remaining dependencies
 pip install -r requirements.txt
+
+pip install 'numpy<2'
 ```
 
 🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
