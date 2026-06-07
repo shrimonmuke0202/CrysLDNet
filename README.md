@@ -1,4 +1,4 @@
-# CrysLDNet
+# CrysLDNet - Latent Diffusion Pretraining for Crystal Property Prediction (ICML 2026)
 Official source code repository for the ICML 2026 paper:
 
 “Latent Diffusion Pretraining for Crystal Property Prediction”
