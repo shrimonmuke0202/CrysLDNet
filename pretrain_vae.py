@@ -309,10 +309,10 @@ def train_for_folder(
         for inx, data in enumerate(tqdm(train_loader)):
             optimizer.zero_grad()
             #pdb.set_trace()
-            results = net([data[0], data[1]]) # Matformer
-            # results = net(data[0]) # PotNet
+            results = net([data[0], data[1]]) 
             loss = criterion.forward(results, data[2])
             accelerator.backward(loss)
+            torch.nn.utils.clip_grad_norm_(net.parameters(), max_norm=1.0)
             optimizer.step()
             scheduler.step()
         with torch.no_grad():        
