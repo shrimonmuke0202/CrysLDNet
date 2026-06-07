@@ -219,6 +219,8 @@ class eComformer(nn.Module): # eComFormer
         self.lattice_mlp = nn.Linear(
             config.node_features, 9
         )
+
+        self.quant_conv = torch.nn.Linear(config.node_features, 2 * config.node_features, bias=False)
         
         if self.classification:
             self.fc_out = nn.Linear(config.fc_features, 2)
@@ -233,7 +235,7 @@ class eComformer(nn.Module): # eComFormer
         if config.link == "identity":
             self.link = lambda x: x
 
-    def forward(self, data) -> torch.Tensor:
+    def forward(self, data,sample_posterior=True) -> torch.Tensor:
         # pdb.set_trace()
         data,ldat = data
         collect_dict = {}
@@ -277,8 +279,7 @@ class eComformer(nn.Module): # eComFormer
             crystal_features = scatter(node_features, data.batch, dim=0, reduce="mean")
             lattice_pred = self.lattice_mlp(crystal_features)
             collect_dict["lattice"] = lattice_pred.view(-1, 3, 3)
-                #collect_list.append(lattice_pred.view(-1, 3, 3))
-            #return [atom_prob, position_pred, lattice_pred.view(-1, 3, 3)]
+                
             return collect_dict
         else:
             return node_features
