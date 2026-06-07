@@ -27,13 +27,6 @@ class LatentDiffusion(nn.Module):
         self.net = eComformer(config)
         pdb.set_trace()
         self.net.load_state_dict(model,strict=True)
-        # print(matched)
-        # print(unmatched)
-        # self.compute_latent_variance = compute_latent_variance
-        # for param in self.net.parameters():
-            # param.requires_grad = False
-
-        # self.net.eval()
         
         self.denoiser = DiT(d_x=256, d_model=768, nhead=12, num_layers=12, num_datasets=1)
         
@@ -61,14 +54,9 @@ class LatentDiffusion(nn.Module):
         # pdb.set_trace()
 
         data = batch[0]
-        # with torch.no_grad():
+        
         x_1 = self.net(batch)
 
-        # if return_latent_stats:
-        #     latent_stats = self.compute_latent_variance(x_1)
-        #     collect_dict["latent_stats"] = latent_stats
-
-        # Convert from PyG batch to dense batch with padding
         x_1, mask = to_dense_batch(x_1, data.batch)
         
         
