@@ -41,5 +41,9 @@ pip install pydantic==1.10.13 --break-system-packages
 pip install tqdm==4.66.1 pandas==2.0.3 --break-system-packages
 
 ```
+## Pretraining Dataset
+To pretrain CrysLDNet, please download the dataset from the following 
+[link](10.6084/m9.figshare.32598966), unzip `pretraining_data.zip`, 
+and download the accompanying file `id_prop_new.csv`.
 
 🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
