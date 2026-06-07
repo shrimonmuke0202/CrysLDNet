@@ -16,4 +16,19 @@ Our approach is designed to provide scalable and physically meaningful pretraini
 ![CrysLDNet Architecture](CrysLDNet.png)
 
 
+## Installation
+
+The list of dependencies is provided in the requirements.txt file, generated using pipreqs. You can install through the following commands:
+
+```bash
+# Install PyTorch with CUDA 12.1 first
+
+conda create -n crysldnet python=3.11.13
+
+pip install torch==2.1.0 --index-url https://download.pytorch.org/whl/cu121
+
+# Then install remaining dependencies
+pip install -r requirements.txt
+```
+
 🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
