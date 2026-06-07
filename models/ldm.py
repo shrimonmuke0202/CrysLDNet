@@ -23,7 +23,6 @@ class LatentDiffusion(nn.Module):
         self.autoencoder_ckpt = autoencoder_ckpt
         model = torch.load(autoencoder_ckpt)
         
-        # self.net = Matformer(config)
         self.net = eComformer(config)
         pdb.set_trace()
         self.net.load_state_dict(model,strict=True)
