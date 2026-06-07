@@ -79,6 +79,10 @@ class Criterion(nn.Module):
         if "lattice" in y_pred.keys():
             lattice_loss = self.l2(y_pred["lattice"].float(), y_gt["lattice"].t().float().view(-1,3,3))
             all_loss += lattice_loss
+
+        loss_kl = y_pred["posterior"].kl()
+        all_loss+=(0.00001*loss_kl).mean()  #KL divergence loss
+
         return all_loss
     
     
