@@ -52,4 +52,4 @@ and download the accompanying file `id_prop_new.csv`.
 ```
 After VAE Pretraining, please take the "best.pt" file which will load for stage 2 LDM Pretraining.
 
-🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
+🚧 LDM and Downstream task code will be updated shortly. Stay tuned!
