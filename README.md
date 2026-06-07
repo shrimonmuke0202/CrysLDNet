@@ -46,4 +46,10 @@ To pretrain CrysLDNet, please download the dataset from the following
 [link](https://doi.org/10.6084/m9.figshare.32598966), unzip `pretraining_data.zip`, 
 and download the accompanying file `id_prop_new.csv`.
 
+## Stage 1 (VAE Pretraining):
+```bash
+      sh pretrain.sh
+```
+After VAE Pretraining, please take the "best.pt" file which will load for stage 2 LDM Pretraining.
+
 🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
