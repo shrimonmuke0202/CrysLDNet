@@ -1,6 +1,6 @@
 # CrysLDNet - Latent Diffusion Pretraining for Crystal Property Prediction. (ICML 2026)
 
-This repository contains the official code release for our ICML 2026 paper ["Latent Diffusion Pretraining for Crystal Property Prediction"](https://arxiv.org/abs/2606.00776), by [Shrimon Mukherjee*](https://www.linkedin.com/in/shrimon-mukherjee-0b816b338/), [Kishalay Das*](https://kdmsit.github.io/), [Partha Basuchowdhuri](https://www.linkedin.com/in/partha-basuchowdhuri-44043a126/) , [Pawan Goyal](https://cse.iitkgp.ac.in/~pawang/), [Niloy Ganguly](https://facweb.iitkgp.ac.in/~niloy/).
+This repository contains the official code release for our ICML 2026 paper ["Latent Diffusion Pretraining for Crystal Property Prediction"](https://arxiv.org/pdf/2606.00776), by [Shrimon Mukherjee*](https://www.linkedin.com/in/shrimon-mukherjee-0b816b338/), [Kishalay Das*](https://kdmsit.github.io/), [Partha Basuchowdhuri](https://www.linkedin.com/in/partha-basuchowdhuri-44043a126/) , [Pawan Goyal](https://cse.iitkgp.ac.in/~pawang/), [Niloy Ganguly](https://facweb.iitkgp.ac.in/~niloy/).
 
 
 “Latent Diffusion Pretraining for Crystal Property Prediction”
