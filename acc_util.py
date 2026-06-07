@@ -39,7 +39,7 @@ class Criterion(nn.Module):
     def __init__(self, mask_ratio):
         super(Criterion, self).__init__()
         self.ce = nn.CrossEntropyLoss(reduction='none')
-        self.l2 = nn.MSELoss()
+        self.l2 = nn.L1Loss()
         self._samplenum = []
         self._mae = []
         self.mask_ratio = (mask_ratio is None)
