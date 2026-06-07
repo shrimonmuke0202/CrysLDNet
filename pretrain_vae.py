@@ -266,7 +266,7 @@ def train_for_folder(
             step_size=100000,
             gamma=0.96,
     )    
-    criterion = Criterion(config.mask_ratio, config.position_noise, config.lattice_noise)
+    criterion = Criterion(config.mask_ratio)
     if accelerator.is_local_main_process:
         metrics = {"loss": criterion}
         history_dict_train = {}
