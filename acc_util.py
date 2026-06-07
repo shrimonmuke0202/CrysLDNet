@@ -36,7 +36,7 @@ def get_data(root_dir, file_format='poscar', debug=False):
     return list(dataset), list(n_outputs)
 
 class Criterion(nn.Module):
-    def __init__(self, mask_ratio, position_noise, lattice_noise):
+    def __init__(self, mask_ratio):
         super(Criterion, self).__init__()
         self.ce = nn.CrossEntropyLoss(reduction='none')
         self.l2 = nn.MSELoss()
