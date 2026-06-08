@@ -257,7 +257,6 @@ class eComformer(nn.Module): # eComFormer
         node_features, adj_feature = self.lin[2](node_features, adj_feature)
         node_features = self.att_layers[3](node_features, data.edge_index, edge_features)
 
-        # crystal-level readout
         if self.pre_train:
 
             collect_dict["moments"] = self.quant_conv(node_features)
