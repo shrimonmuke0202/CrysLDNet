@@ -7,7 +7,7 @@ from .dit import DiT
 #from .comformer import iComformerConfig, eComformerConfig
 #from .comformer import iComformer, eComformer
 from .pddformer import iComformerConfig, eComformerConfig
-from .pddformer import iComformer, eComformer
+from .pddformer import eComformer
 from .flow_matching import FlowMatchingInterpolant
 from torch import nn
 import torch
@@ -22,51 +22,22 @@ class LatentDiffusion(nn.Module):
         super().__init__()
         self.autoencoder_ckpt = autoencoder_ckpt
         model = torch.load(autoencoder_ckpt)
-        
-        # self.net = Matformer(config)
-        self.net = eComformer(config)
-        pdb.set_trace()
-        self.net.load_state_dict(model,strict=True)
-        # print(matched)
-        # print(unmatched)
-        # self.compute_latent_variance = compute_latent_variance
-        # for param in self.net.parameters():
-            # param.requires_grad = False
 
-        # self.net.eval()
+        self.net = eComformer(config)
+
+        self.net.load_state_dict(model,strict=False)
         
         self.denoiser = DiT(d_x=256, d_model=768, nhead=12, num_layers=12, num_datasets=1)
         
         self.interpolent = FlowMatchingInterpolant(min_t=1e-2, corrupt=True, num_timesteps=100,self_condition=True, self_condition_prob=0.5)
-    
-    def compute_latent_variance(self, x_1):
-        """
-        x_1: [num_nodes, latent_dim]
-        returns variance statistics across nodes
-        """
-        if x_1.size(0) < 2:
-            dim_var = torch.zeros(x_1.size(1), device=x_1.device)
-        else:
-            dim_var = torch.var(x_1, dim=0, unbiased=False)  # [256]
-
-        return {
-            "mean_dim_var": dim_var.mean(),
-            "total_var": dim_var.sum(),
-            "dim_var": dim_var
-        }
 
     def forward(self, batch: Data,return_latent_stats=False):
         collect_dict = {}
         
-        # pdb.set_trace()
-
         data = batch[0]
-        # with torch.no_grad():
+
         x_1 = self.net(batch)
 
-        # if return_latent_stats:
-        #     latent_stats = self.compute_latent_variance(x_1)
-        #     collect_dict["latent_stats"] = latent_stats
 
         # Convert from PyG batch to dense batch with padding
         x_1, mask = to_dense_batch(x_1, data.batch)
