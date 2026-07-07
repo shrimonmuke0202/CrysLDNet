@@ -46,4 +46,26 @@ To pretrain CrysLDNet, please download the dataset from the following
 [link](https://doi.org/10.6084/m9.figshare.32598966), unzip `pretraining_data.zip`, 
 and download the accompanying file `id_prop_new.csv`.
 
-🚧 Source code, training scripts, and documentation will be updated shortly. Stay tuned!
+### Step 1: Pretrain the VAE
+ 
+```bash
+sh pretrain.sh
+```
+ 
+Once pretraining completes, the best checkpoint will be saved to your working directory.
+ 
+### Step 2: Pretrain the Latent Diffusion Model (LDM)
+ 
+First, update the autoencoder checkpoint path in the config:
+ 
+```python
+net = LatentDiffusion(autoencoder_ckpt="your_model_path", config=config.model)
+```
+ 
+Then run:
+ 
+```bash
+sh pretrain_ldm.sh
+```
+
+
