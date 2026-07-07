@@ -252,7 +252,7 @@ def train_for_folder(
         print("n_val:", len(val_loader.dataset))
         print("n_test:", len(test_loader.dataset))
     
-    net = LatentDiffusion(autoencoder_ckpt="CrysLDNet_pretrain_vae_new_m0.3/best.pt", config = config.model)
+    net = LatentDiffusion(autoencoder_ckpt="your best model", config = config.model)
     net.to(device)
     params = group_decay(net)
     optimizer = setup_optimizer(params, config)
